@@ -9,6 +9,7 @@ CREATE TABLE eventos (
   `imagem` varchar(255) null default null,
   `descricao` text null default null,
   `popularidade` int null default 0,
+  `categoria` int null default null,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
