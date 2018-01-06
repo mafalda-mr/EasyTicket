@@ -53,70 +53,39 @@
 
 			<table cellspacing="0">
 
-				<tr>
-					<td>
-						<img class="img" src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-				    <td>
-				    	<button id="myBtn">
-				    		<span class="botao2">Saber Mais</span>
-						</button> 
-		  		    </td>
-	 			</tr>
+<?php 
+			// buscar eventos
+			$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
+			$query 		= "SELECT * FROM eventos where categoria = 1";
+			$result		= $connection->query($query);
+			if ($result) {
+				$event = $result->fetch_assoc();
+			   while ($event) {
+			   	$date = date_create($event['data']);
+			    	echo '
+			    	<tr>
+						<td>
+							<img class="img" src="images/'. $event['imagem'] . '.jpg"/>
+						</td>
+					    <td>
+					    	<h1 class="musica_dia left">'. date_format($date, 'd') . '</h1>
+							<p class="musica_mes">' . date_format($date, 'F') . ' \'' . date_format($date, 'y') . '</p>
+					    </td>
+					    <td class="artista">' . $event['titulo'] . '</td>
+					    <td>' . $event['local'] . '</td>
+					    <td>
+					    	<button id="myBtn">
+					    		<span class="botao2">Saber Mais</span>
+							</button> 
+			  		    </td>
+		 			</tr>';
 
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
+			    	$event = $result->fetch_assoc();
+			    }
+			    $result->free();
+			}
+			mysqli_close($connection);
+?>
 
 	 		</table>
 
