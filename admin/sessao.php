@@ -1,6 +1,6 @@
 <?php
 	// Ligar à bd
-	$connection = mysqli_connect("atlastockdev_db_1", "root", "root", "easy_ticket", 3306);
+	$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
 	
 	// Iniciar sessão
 	session_start();

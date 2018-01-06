@@ -1,8 +1,30 @@
+<!-- FESTIVAIS -->
+
+<?php
+
+//Ligação à base de dados
+$ligacao = mysqli_connect('localhost','root','','easy_ticket');
+
+mysqli_set_charset($ligacao, 'utf8');
+
+//Consulta à base de dados
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos WHERE categoria=2");
+
+$festivais = array();
+
+while ($linha = mysqli_fetch_assoc($consulta) ){
+	$festivais[] = $linha;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Easy Ticket - Música</title>
+    <title>Easy Ticket - Festivais</title>
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
@@ -21,7 +43,7 @@
 
 <!-- LOGO -->
 
-		<a href="index.html">
+		<a href="index.php">
 			<img src="images/logo.png" id="logo" class="left"/>
 		</a>
 		
@@ -29,22 +51,21 @@
 <!-- MENU -->
 
 		<nav id="menu" class="right">
-			<a href="musica.html">Música</a>
-			<a href="festivais.html">Festivais</a>
-			<a href="tradicional.html">Tradicional</a>
-			<a href="teatro.html">Teatro</a>
+			<a href="musica.php">Música</a>
+			<a href="festivais.php">Festivais</a>
+			<a href="tradicional.php">Tradicional</a>
+			<a href="teatro.php">Teatro</a>
 		</nav>
 
 	</header>
 
 <!-- INTRO -->
 
-	<header id="intro_tradicional">
+	<header id="intro_festivais">
 
-		<h1 id="intro_varios_tradicional">#Tradicional</h1>
+		<h1 id="intro_varios">#Festivais</h1>
 
 	</header>
-
 
 <div class="clear"></div>
 
@@ -54,71 +75,24 @@
 
 			<table cellspacing="0">
 
-				<tr>
-					<td>
-						<img class="img" src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-				    <td>
-				    	<button id="myBtn">
-				    		<span class="botao2">Saber Mais</span>
-						</button> <!-- Como é que eu faço para este botão ficar com a formatação igual ao "botao" e, como é que faço para ele abrir o modal (o mesmo da homepage)-->
-		  		    </td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
-	 			<tr>
-					<td>
-						<img src="images/proximos4.png"/>
-					</td>
-				    <td>
-				    	<h1 class="musica_dia left">02</h1>
-						<p class="musica_mes">Março '18</p>
-				    </td>
-				    <td class="artista">The Gift</td>
-				    <td>Coliseu do Porto</td>
-	 			</tr>
-
+				<?php for ($i=0; $i<count($festivais); $i++) { ?>
+						<tr>
+							<td>
+								<img class="img" src="images/<?php echo $festivais[$i]['imagem']; ?>"/>
+							</td>
+								<td>
+									<h1 class="musica_dia left">02</h1>
+								<p class="musica_mes">Março '18</p>
+								</td>
+								<td class="artista"><?php echo $festivais[$i]['titulo']; ?></td>
+								<td><?php echo $festivais[$i]['local']; ?></td>
+								<td>
+									<button id="myBtn">
+										<span class="botao2">Saber Mais</span>
+								</button> <!-- Como é que eu faço para este botão ficar com a formatação igual ao "botao" e, como é que faço para ele abrir o modal (o mesmo da homepage)-->
+									</td>
+						</tr>
+				<?php } ?>
 	 		</table>
 
 	 		<div id="myModal" class="modal">

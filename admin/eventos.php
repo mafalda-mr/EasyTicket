@@ -1,11 +1,12 @@
 <?php
 	include('sessao.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Eventos</title>
-		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="style.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<div id="eventos">
@@ -27,7 +28,7 @@
 			</tr>
 			<?php 
 			// buscar eventos
-			$connection = mysqli_connect("atlastockdev_db_1", "root", "root", "easy_ticket", 3306);
+			$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
 			$query 		= "SELECT * FROM eventos";
 			$result		= $connection->query($query);
 			if ($result) {
@@ -39,7 +40,7 @@
 							<td>'. $event['titulo'] . '</td>
 							<td>'. $event['data'] . '</td>
 							<td>'. $event['local'] . '</td>
-							<td>'. $event['image'] . '</td>
+							<td>'. $event['imagem'] . '</td>
 							<td>'. $event['descricao'] . '</td>
 							<td>'. $event['popularidade'] . '</td>
 							<td><input type="button" value="Editar"/></td>

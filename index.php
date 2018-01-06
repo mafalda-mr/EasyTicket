@@ -1,3 +1,23 @@
+<!-- PÁGINA PRINCIPAL -->
+
+<?php 
+
+//Ligação à base de dados
+$ligacao = mysqli_connect('localhost','root','','easy_ticket');
+
+mysqli_set_charset($ligacao, 'utf8');
+
+//Consulta à base de dados
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos ORDER BY popularidade DESC LIMIT 8");
+
+$mais_vendidos = array();
+
+while ($linha = mysqli_fetch_assoc($consulta) ){
+	$mais_vendidos[] = $linha;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,17 +40,17 @@
 	<header id="cabecalho">
 
 <!-- LOGO -->
-		<a href="index.html">
+		<a href="index.php">
 			<img src="images/logo.png" id="logo" class="left"/>
 		</a>
 		
 <!-- MENU -->
 
 		<nav id="menu" class="right">
-			<a href="musica.html" target="_blank">Música</a>
-			<a href="festivais.html">Festivais</a>
-			<a href="tradicional.html">Tradicional</a>
-			<a href="teatro.html">Teatro</a>
+			<a href="musica.php">Música</a>
+			<a href="festivais.php">Festivais</a>
+			<a href="tradicional.php">Tradicional</a>
+			<a href="teatro.php">Teatro</a>
 		</nav>
 
 	</header>
@@ -59,17 +79,12 @@
 
 		<div id="mais_vendidos_imagens">
 
-			<button id="myBtn">
-				<img src="images/+vendidos2.jpg"/>
-			</button>
-
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
-			<img src="images/+vendidos2.jpg"/>
+			<?php for($i=0; $i<count($mais_vendidos);$i++) { ?>
+				<button id="myBtn">
+					<img src="images/<?php echo $mais_vendidos[$i]['imagem']; ?>"/>
+				</button>
+			<?php } ?>
+		
 
 <!-- INFORMAÇÕES + COMPRAR - PÁGINA SOBREPOSTA -->
 
@@ -108,11 +123,26 @@
 	</div> 
 
 
-
-
-
 <div class="clear"></div>
 
+<?php 
+
+//Ligação à base de dados
+$ligacao = mysqli_connect('localhost','root','','easy_ticket');
+
+mysqli_set_charset($ligacao, 'utf8');
+
+//Consulta à base de dados
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos ORDER BY data DESC LIMIT 10");
+
+$proximos = array();
+
+while ($linha = mysqli_fetch_assoc($consulta) ){
+	$proximos[] = $linha;
+}
+
+?>
+		
 <!-- PRÓXIMOS CONCERTOS -->
 	
 	<div id="proximos">
@@ -122,56 +152,20 @@
 		<div id="proximos_conteudo">
 
 		<table cellspacing="0">
-
-			<tr>
-				<td>
-					<img class="img" src="images/+vendidos2.jpg"/>
-				</td>
-			    <td>
-			    	<h1 class="proximos_dia left">02</h1>
-					<p class="proximos_mes">Março '18</p>
-			    </td>
-			    <td class="artista">The Gift</td>
-			    <td>Coliseu do Porto</td>
- 			</tr>
-
- 						<tr>
-				<td>
-					<img src="images/proximos4.png"/>
-				</td>
-			    <td>
-			    	<h1 class="proximos_dia left">02</h1>
-					<p class="proximos_mes">Março '18</p>
-			    </td>
-			    <td>The Gift</td>
-			    <td>Coliseu do Porto</td>
- 			</tr>
-
- 						<tr>
-				<td>
-					<img src="images/proximos4.png"/>
-				</td>
-			    <td>
-			    	<h1 class="proximos_dia left">02</h1>
-					<p class="proximos_mes">Março '18</p>
-			    </td>
-			    <td>The Gift</td>
-			    <td>Coliseu do Porto</td>
- 			</tr>
-
- 						<tr>
-				<td>
-					<img src="images/proximos4.png"/>
-				</td>
-			    <td>
-			    	<h1 class="proximos_dia left">02</h1>
-					<p class="proximos_mes">Março '18</p>
-			    </td>
-			    <td>The Gift</td>
-			    <td>Coliseu do Porto</td>
- 			</tr>
-
- 			
+			
+			<?php for ($i=0; $i<count($proximos); $i++) { ?>
+					<tr>
+						<td>
+							<img class="img" src="images/<?php echo $proximos[$i]['imagem']; ?>"/>
+						</td>
+							<td>
+								<h1 class="proximos_dia left">02</h1>
+							<p class="proximos_mes">Março '18</p>
+							</td>
+							<td class="artista"><?php echo $proximos[$i]['titulo']; ?></td>
+							<td><?php echo $proximos[$i]['local']; ?></td>
+					</tr>
+			<?php } ?>
 
 		</table>
 

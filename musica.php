@@ -1,3 +1,6 @@
+<!-- MÚSICA -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +24,7 @@
 
 <!-- LOGO -->
 
-		<a href="index.html">
+		<a href="index.php">
 			<img src="images/logo.png" id="logo" class="left"/>
 		</a>
 		
@@ -29,10 +32,10 @@
 <!-- MENU -->
 
 		<nav id="menu" class="right">
-			<a href="musica.html">Música</a>
-			<a href="festivais.html">Festivais</a>
-			<a href="tradicional.html">Tradicional</a>
-			<a href="teatro.html">Teatro</a>
+			<a href="musica.php">Música</a>
+			<a href="festivais.php">Festivais</a>
+			<a href="tradicional.php">Tradicional</a>
+			<a href="teatro.php">Teatro</a>
 		</nav>
 
 	</header>
@@ -65,10 +68,10 @@
 			    	echo '
 			    	<tr>
 						<td>
-							<img class="img" src="images/'. $event['imagem'] . '.jpg"/>
+							<img class="img" src="images/'. $event['imagem'] . '"/>
 						</td>
 					    <td>
-					    	<h1 class="musica_dia left">'. date_format($date, 'd') . '</h1>
+					    	<h1 class="musica_dia">'. date_format($date, 'd') . '</h1>
 							<p class="musica_mes">' . date_format($date, 'F') . ' \'' . date_format($date, 'y') . '</p>
 					    </td>
 					    <td class="artista">' . $event['titulo'] . '</td>

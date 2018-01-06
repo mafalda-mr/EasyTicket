@@ -20,7 +20,7 @@
 			$password = $_POST['password'];
 
 			// Ligar à bd
-			$connection = mysqli_connect("atlastockdev_db_1", "root", "root", "easy_ticket", 3306);
+			$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
 			
 			// Para evitar sql injection
 			$username = stripslashes($username);
