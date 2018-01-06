@@ -1,5 +1,22 @@
 <!-- MÚSICA -->
 
+<?php
+
+//Ligação à base de dados
+$ligacao = mysqli_connect('localhost','root','','easy_ticket');
+
+mysqli_set_charset($ligacao, 'utf8');
+
+//Consulta à base de dados
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos WHERE categoria=1");
+
+$musicas = array();
+
+while ($linha = mysqli_fetch_assoc($consulta) ){
+	$musicas[] = $linha;
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -56,39 +73,26 @@
 
 			<table cellspacing="0">
 
-<?php 
-			// buscar eventos
-			$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
-			$query 		= "SELECT * FROM eventos where categoria = 1";
-			$result		= $connection->query($query);
-			if ($result) {
-				$event = $result->fetch_assoc();
-			   while ($event) {
-			   	$date = date_create($event['data']);
-			    	echo '
+<?php for($i=0; i<count($musicas); $i++) {
+			   	$data = date_create($musicas[$i]['data']);
+?>
 			    	<tr>
 						<td>
-							<img class="img" src="images/'. $event['imagem'] . '"/>
+							<img class="img" src="images/<?php echo $musicas[$i]['imagem']; ?>"/>
 						</td>
 					    <td>
-					    	<h1 class="musica_dia">'. date_format($date, 'd') . '</h1>
-							<p class="musica_mes">' . date_format($date, 'F') . ' \'' . date_format($date, 'y') . '</p>
+					    	<h1 class="musica_dia"><?php echo date_format($data, 'd');?></h1>
+							<p class="musica_mes"><?php echo date_format($data, 'F') . ' \'' . date_format($data, 'y'); ?></p>
 					    </td>
-					    <td class="artista">' . $event['titulo'] . '</td>
-					    <td>' . $event['local'] . '</td>
+					    <td class="artista"><?php echo $musicas[$i]['titulo'];?></td>
+					    <td><?php echo $musicas[$i]['local'];?></td>
 					    <td>
 					    	<button id="myBtn">
 					    		<span class="botao2">Saber Mais</span>
 							</button> 
 			  		    </td>
-		 			</tr>';
-
-			    	$event = $result->fetch_assoc();
-			    }
-			    $result->free();
-			}
-			mysqli_close($connection);
-?>
+		 			</tr>
+<?php } ?>
 
 	 		</table>
 
