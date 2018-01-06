@@ -4,11 +4,12 @@
 
 //Ligação à base de dados
 $ligacao = mysqli_connect('localhost','root','','easy_ticket');
+//$ligacao = mysqli_connect('atlastockdev_db_1','root','root','easy_ticket');
 
 mysqli_set_charset($ligacao, 'utf8');
 
 //Consulta à base de dados
-$consulta = mysqli_query($ligacao, "SELECT * FROM eventos ORDER BY popularidade DESC LIMIT 8");
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos WHERE `data` >= NOW() ORDER BY popularidade DESC LIMIT 8");
 
 $mais_vendidos = array();
 
@@ -80,30 +81,36 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		<div id="mais_vendidos_imagens">
 
 			<?php for($i=0; $i<count($mais_vendidos);$i++) { ?>
-				<button id="myBtn">
+				<button id="myBtn" onclick='showModal("modal-<?php echo $mais_vendidos[$i]['id']; ?>");'>
 					<img src="images/<?php echo $mais_vendidos[$i]['imagem']; ?>"/>
 				</button>
 			<?php } ?>
 		
+		</div>
+	</div>
 
 <!-- INFORMAÇÕES + COMPRAR - PÁGINA SOBREPOSTA -->
-
-	<div id="myModal" class="modal">
-
+<?php for($i=0; $i<count($mais_vendidos);$i++) { ?>
+	<div id="modal-<?php echo $mais_vendidos[$i]['id']; ?>" class="modal">
+	  
 	  <!-- CONTEÚDO DA PÁGINA SOBREPOSTA -->
-
 	  <div class="modal-content">
 
 	  		<!-- BOTÃO PARA FECHAR A JANELA SOBREPOSTA -->
-	    	<span class="close">&times;</span>
+	    	<span class="close" onclick='closeModal("modal-<?php echo $mais_vendidos[$i]['id']; ?>");'>&times;</span>
 	    
-		    <img class="left" src="images/+vendidos2.jpg"/>
+		    <img class="left" src="images/<?php echo $mais_vendidos[$i]['imagem']; ?>"/>
 
-		    <h1>Alter Bridge</h1>
+		    <h1><?php echo $mais_vendidos[$i]['titulo']; ?></h1>
 
-		    <p>00/00/1234 às xxh</p>
+		    <p>
+		    	<?php 
+		    		$data = date_create($mais_vendidos[$i]['data']);
+		    		echo date_format($data, 'd-M-Y') . ' às ' . date_format($data, 'h:i'); 
+	    		?>
+    		 </p>
 
-		    <p>Local</p>
+		    <p><?php echo $mais_vendidos[$i]['local']; ?></p>
 
 		    <div class="botao">
 		    	<a href="comprar_bilhetes.html" target="_blank">Comprar</a>
@@ -112,29 +119,19 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		    <br></br>
 		    <br></br>
 
-		    <p>Bacon ipsum dolor amet tenderloin fatback jerky biltong bacon. Sirloin pork loin pork chop kielbasa alcatra, cow chicken beef burgdoggen hamburger flank. Tongue ball tip pork belly meatball sirloin, tail bacon. Hamburger bresaola prosciutto short loin, landjaeger ball tip bacon buffalo jerky doner short ribs swine pork loin tri-tip tenderloin.
-
-			Rump bresaola hamburger flank, doner turducken tail ribeye pastrami shankle meatball beef ribs andouille pork loin. Pork belly swine picanha kielbasa pancetta shoulder beef ground round bresaola bacon. Capicola ham hock jerky biltong shank alcatra strip steak short loin tenderloin spare ribs. Alcatra short loin pork, doner ham beef ribs shoulder short ribs chuck picanha sirloin kevin shankle salami. Capicola tenderloin short ribs shank ham, jowl burgdoggen. Corned beef ball tip tenderloin ribeye beef bresaola meatball tri-tip frankfurter alcatra salami doner brisket.</p>
-
+		    <p><?php echo $mais_vendidos[$i]['descricao']; ?></p>
 		</div>
-
 	</div>
-		
-	</div> 
 
+
+<?php } ?>
 
 <div class="clear"></div>
 
 <?php 
 
-//Ligação à base de dados
-$ligacao = mysqli_connect('localhost','root','','easy_ticket');
-
-mysqli_set_charset($ligacao, 'utf8');
-
 //Consulta à base de dados
-$consulta = mysqli_query($ligacao, "SELECT * FROM eventos ORDER BY data DESC LIMIT 10");
-
+$consulta = mysqli_query($ligacao, "SELECT * FROM eventos WHERE `data` >= NOW() ORDER BY data LIMIT 10");
 $proximos = array();
 
 while ($linha = mysqli_fetch_assoc($consulta) ){
@@ -142,6 +139,8 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 }
 
 ?>
+
+
 		
 <!-- PRÓXIMOS CONCERTOS -->
 	
@@ -153,14 +152,16 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 
 		<table cellspacing="0">
 			
-			<?php for ($i=0; $i<count($proximos); $i++) { ?>
-					<tr>
+			<?php for ($i=0; $i<count($proximos); $i++) { 
+				$data = date_create($proximos[$i]['data'])
+				?>
+					<tr onclick='showModal("modal-<?php echo $proximos[$i]['id']; ?>");'>
 						<td>
 							<img class="img" src="images/<?php echo $proximos[$i]['imagem']; ?>"/>
 						</td>
 							<td>
-								<h1 class="proximos_dia left">02</h1>
-							<p class="proximos_mes">Março '18</p>
+								<h1 class="proximos_dia left"><?php echo date_format($data, 'd'); ?></h1>
+							<p class="proximos_mes"><?php echo date_format($data, 'F') . ' \'' . date_format($data, 'y'); ?></p>
 							</td>
 							<td class="artista"><?php echo $proximos[$i]['titulo']; ?></td>
 							<td><?php echo $proximos[$i]['local']; ?></td>
@@ -169,7 +170,42 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 
 		</table>
 
-</div>
+<!-- INFORMAÇÕES + COMPRAR - PÁGINA SOBREPOSTA -->
+<?php for($i=0; $i<count($proximos);$i++) { ?>
+	<div id="modal-<?php echo $proximos[$i]['id']; ?>" class="modal">
+	  
+	  <!-- CONTEÚDO DA PÁGINA SOBREPOSTA -->
+	  <div class="modal-content">
+
+	  		<!-- BOTÃO PARA FECHAR A JANELA SOBREPOSTA -->
+	    	<span class="close" onclick='closeModal("modal-<?php echo $proximos[$i]['id']; ?>");'>&times;</span>
+	    
+		    <img class="left" src="images/<?php echo $proximos[$i]['imagem']; ?>"/>
+
+		    <h1><?php echo $proximos[$i]['titulo']; ?></h1>
+
+		    <p>
+		    	<?php 
+		    		$data = date_create($proximos[$i]['data']);
+		    		echo date_format($data, 'd-M-Y') . ' às ' . date_format($data, 'h:i'); 
+	    		?>
+    		 </p>
+
+		    <p><?php echo $proximos[$i]['local']; ?></p>
+
+		    <div class="botao">
+		    	<a href="comprar_bilhetes.html" target="_blank">Comprar</a>
+		    </div>
+
+		    <br></br>
+		    <br></br>
+
+		    <p><?php echo $proximos[$i]['descricao']; ?></p>
+		</div>
+	</div>
+
+
+<?php } ?>
 
 	</div>
 

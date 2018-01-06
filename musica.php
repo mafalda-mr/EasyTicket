@@ -4,6 +4,7 @@
 
 //Ligação à base de dados
 $ligacao = mysqli_connect('localhost','root','','easy_ticket');
+//$ligacao = mysqli_connect('atlastockdev_db_1','root','root','easy_ticket');
 
 mysqli_set_charset($ligacao, 'utf8');
 
@@ -73,7 +74,7 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 
 			<table cellspacing="0">
 
-<?php for($i=0; i<count($musicas); $i++) {
+<?php for($i=0; $i<count($musicas); $i++) {
 			   	$data = date_create($musicas[$i]['data']);
 ?>
 			    	<tr>
