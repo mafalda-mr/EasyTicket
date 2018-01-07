@@ -19,7 +19,7 @@
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 
-			// Ligar à bd
+			// Ligar à base de dados
 			$connection = mysqli_connect("localhost", "root", "", "easy_ticket");
 			
 			// Para evitar sql injection
@@ -44,7 +44,7 @@
 				$error = "Utilizador ou palavra-passe inválidos";
 			}
 
-		// Fechar ligação à BD		
+		// Fechar ligação à base de dados		
 		mysqli_close($connection);
 		}
 	}

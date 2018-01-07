@@ -5,17 +5,41 @@
 	if(isset($_SESSION['login_user'])){
 		header("location: eventos.php");
 	}
-
 ?>
 
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Admin </title>
-		<link href="css/style.css" rel="stylesheet" type="text/css">
-	</head>
-	<body>
+<head>
+    <meta charset="utf-8" />
+    <title>Admin</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+</head>
+<body>
+
+<!-- CONTENTOR -->
+
+	<header id="cabecalho">
+
+<div id="contentor">
+
+<!-- CABEÇALHO -->
+
+	<header id="cabecalho">
+
+<!-- LOGO -->
+		<a href="index.php">
+			<img src="../images/logo.png" id="logo" class="left"/>
+		</a>
+		
+		<h1 class="right">Administração</h1>
+	</header>
+
 		<div id="main">
-			<h1>Easy Ticket - Admin</h1>
+
+<!-- FORMULÁRIO DE LOGIN -->
+			
 			<div id="login">
 				<h2>Login</h2>
 				<form action="" method="post">

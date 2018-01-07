@@ -107,7 +107,7 @@ p{
     font-family: 'Abril Fatface', cursive;
 }
 
-/* MAIS VENDID */
+/* MAIS VENDIDOS */
 
 #mais_vendidos{
     background-color: #b7b7b7;
@@ -117,6 +117,7 @@ p{
 #mais_vendidos img{
     margin-left:10px;
     margin-bottom:20px;
+		cursor:pointer;
 }
 
 #mais_vendidos_titulo{
@@ -188,7 +189,9 @@ button{
 }
 
 .botao{
-    margin-top:20px;   
+    margin-top:20px;
+		cursor:pointer;
+	margin-bottom:20px;
 }
 
 .botao a{
@@ -211,6 +214,7 @@ button{
 
 
 /* BOTÃO PARA FECHAR A JANELA SOBREPOSTA */
+
 .close {
     color: #aaa;
     float: right;
@@ -250,11 +254,11 @@ table{
     width:100%;
     padding:0;
     text-align: center;
-
 }
 
 tr:hover{
     background-color:#c1c1c1;
+		cursor:pointer;
 }
 
 td{
@@ -264,14 +268,14 @@ td{
 }
 
 .proximos_dia{
-    margin-left:10px;
+   	margin-left:10px;
     font-weight: bold;
 }
 
 .proximos_mes{
     text-transform: uppercase;
     font-size: 20px;
-    margin-top: 20px;
+   	margin-top: 20px;
     margin-bottom: 10px;
     margin-left:10px;
     margin-right:20px;
@@ -287,7 +291,7 @@ td{
     background-color:#2c2b33;
     color:#FFF;
     padding:20px;
-    height: 150px;
+    height: 180px;
 }
 
 #contactos{
@@ -322,7 +326,18 @@ td{
     margin-top:15px;
 }
 
+#copy{
+	margin-top:110px;
+	margin-bottom:10px;
+			text-align:center;
+	display:inline-block;
+	margin-left:150px;
+}
 
+#copy p{
+		font-style:italic;
+	font-size:12px;
+}
 
 /* PÁGINA COMPRAR_BILHETES */
 
@@ -332,6 +347,22 @@ td{
     color:#3f3f3f;
     padding:30px;
     font-size:40px;
+}
+
+#comprar td{
+	padding:10px 0;
+}
+
+#comprar_cabecalho{
+		background-color:#108bbd;
+		color:#FFF;
+		text-align:center;
+		padding:10px 10px;
+		margin-bottom:50px;
+}
+
+#comprar{
+	font-weight:bold;
 }
 
 
@@ -375,7 +406,7 @@ td{
 }
 
 .botao2{
- 
+ 		cursor:pointer;
     border:2px solid #108bbd;
     padding:5px 20px;
     display: inline-block;
@@ -394,6 +425,7 @@ td{
     background-position: center;
     background-repeat: none;
     height: 400px;
+		margin-bottom: 30px;
 }
 
 /* PÁGINA - TRADICIONAL */
@@ -415,6 +447,7 @@ td{
     background-position: center;
     background-repeat: none;
     height: 400px;
+		margin-bottom: 30px;
 }
 
 /* PÁGINA - TEATRO */
@@ -424,4 +457,57 @@ td{
     background-position: center;
     background-repeat: none;
     height: 400px;
+		margin-bottom: 30px;
+}
+
+
+/* PÁGINA OBRIGADO */
+
+#obrigada_frase{
+	text-align:center;
+}
+
+#obrigada_frase1{
+		font-size:50px;
+		color:#108bbd;
+		padding-top:30px;
+		font-weight:bolder;
+		display:none;
+}
+
+#obrigada_frase2{
+	margin-top:100px;
+	display:none;
+}
+
+#obrigada_frase3{
+	display:none;
+}
+
+.botao_obrigado{
+    margin-top:200px;
+		cursor:pointer;
+	display:none;
+
+}
+
+.botao_obrigado a{
+    border:2px solid #108bbd;
+    padding:5px 20px;
+    display: inline-block;
+    font-family:'Lato', sans-serif;
+    font-size:23px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:#108bbd;
+}
+
+#rodape_obrigado{
+    background-color:#2c2b33;
+    color:#FFF;
+    padding:20px;
+    height: 180px;
+		position:fixed;
+		bottom:0;
+		width:980px;
 }

@@ -4,7 +4,7 @@ body{
     margin:0;
     font-family:'Lato', sans-serif;
     font-size:16px;
-    background-color: red;
+    background-color: #FFF;
 }
 
 html{
@@ -18,6 +18,7 @@ html{
 
 a{
 	text-decoration:none;
+		color:#108bbd;
 }
 
 h1{
@@ -31,6 +32,14 @@ p{
 
 .clear{
     clear:both;
+}
+
+.right{
+	float:right;
+}
+
+.left{
+	float:left;
 }
 
 
@@ -58,12 +67,17 @@ p{
     margin-left:20px;
 }
 
+#cabecalho h1{
+	color:#FFF;
+	margin-top:10px;
+	margin-left:500px;
+}
 
+/* FORMULÁRIO DE LOGIN */
 
 #main {
 	width: 960px;
 	margin: 50px auto;
-	font-family: raleway
 }
 
 span {
@@ -87,12 +101,16 @@ hr {
 
 #login {
 	width: 300px;
-	float: left;
 	border-radius: 10px;
-	font-family: raleway;
 	border: 2px solid #ccc;
 	padding: 10px 40px 25px;
-	margin-top: 70px
+	margin-top: 70px;
+	text-align:center;
+	margin-left:300px;
+}
+
+#login h2{
+	background-color:#FFF;
 }
 
 input[type=text], input[type=password] {
@@ -107,14 +125,15 @@ input[type=text], input[type=password] {
 
 input[type=submit] {
 	width: 100%;
-	background-color: #FFBC00;
+	background-color: #108bbd;
 	color: #fff;
-	border: 2px solid #FFCB00;
+	border: 2px solid #108bbd;
 	padding: 10px;
 	font-size: 20px;
 	cursor: pointer;
 	border-radius: 5px;
-	margin-bottom: 15px
+	margin-bottom: 15px;
+	margin-top:20px;
 }
 
 #profile {
@@ -124,21 +143,134 @@ input[type=submit] {
 	background-color: #DCE6F7
 }
 
-#logout {
-	float: right;
-	padding: 5px;
-	border: dashed 1px gray
+/* PÁGINA DE ADMINISTRAÇÃO */
+
+#welcome{
+	font-size:30px;
+	font-family: 'Abril Fatface', cursive;
 }
 
-a {
-	text-decoration: none;
-	color: #6495ed
+/* BOTÃO DE LOGOUT */
+
+#logout{
+		margin-top:10px;
+		float:right;
+	  border:2px solid #108bbd;
+    padding:5px 20px;
+    display: inline-block;
+    font-family:'Lato', sans-serif;
+    font-size:23px;
+    font-weight: bold;
+    text-transform: uppercase;
+		backgound-color:#FFF;
+    color:#108bbd;
 }
 
-i {
-	color: #6495ed
+#logout:hover{
+	  transition: 0.5s;
+    background-color: #108bbd;
 }
 
-.clear {
-	clear: both;
+#logout a:hover{
+		    color:#2c2b33;
+}
+
+/* TABELA DE EVENTOS */
+
+table{
+    width:100%;
+    padding:0;
+    text-align: center;
+		padding-top:50px;
+		padding-bottom:40px;
+
+}
+
+th{
+	font-size:22px;
+	color:#108bbd;
+	font-weight:bold;
+	border-bottom:2px solid #c1c1c1;
+	padding:7px 20px 10px 20px;
+}
+
+tr:hover{
+    background-color:#c1c1c1;
+		cursor:pointer;
+}
+
+
+td{
+    border-bottom:2px solid #c1c1c1;
+    padding:7px 20px 5px 20px;
+    font-size:20px;
+}
+
+td:first-child{
+	font-weight:bold;
+}
+
+input[type=button]{
+		border:1px solid #108bbd;
+    padding:5px 10px;
+    display: inline-block;
+    font-size:15px;
+    font-weight: bold;
+    color:#108bbd;
+		background-color:#FFF;
+}
+
+/* BOTÃO DE APAGAR NOTICIA */
+
+.delete-link{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	background:url(../images/delete.png) no-repeat center; 
+	background-size:contain;
+	float:right;
+	margin:40px 20px 45px 0px;
+}
+
+.novo{
+	margin-top:30px;
+	margin-left:435px;
+	border:2px solid #108bbd;
+	color:#FFF;
+	background-color:#108bbd;
+	padding:5px 10px;
+	margin-top:20px;
+	font-weight:bold;
+	font-size:25px;
+}
+
+.novo:hover{
+	  transition: 0.5s;
+    background-color: #108bbd;
+    color:#FFF;
+}
+
+
+/* PÁGINA CRIAR NOVO */
+
+.item-insert{
+	margin-top:30px;	
+}
+
+.item-insert h2{
+	background-color:#FFF;
+}
+
+.editor{
+	width:980px;
+	height:200px;
+}
+
+input[type="file"]{
+	margin-top:20px;
+}
+
+.submit-button{
+	margin-top:20px;
+	background-color:#108bbd;
 }

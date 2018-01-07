@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 05, 2018 at 09:58 PM
--- Server version: 5.5.38-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Máquina: localhost
+-- Data de Criação: 07-Jan-2018 às 14:59
+-- Versão do servidor: 5.5.38-0ubuntu0.14.04.1
+-- versão do PHP: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `easy_ticket`
+-- Base de Dados: `easy_ticket`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Estrutura da tabela `admin`
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -31,20 +31,21 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `admin`
+-- Extraindo dados da tabela `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'marco', '1'),
-(2, 'mafalda', '1');
+(2, 'Mafalda', 'Mafalda'),
+(3, 'Nuno_Palma', 'Nuno_Palma'),
+(4, 'Bárbara', 'Barbara');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventos`
+-- Estrutura da tabela `eventos`
 --
 
 CREATE TABLE IF NOT EXISTS `eventos` (
@@ -62,11 +63,11 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
--- Dumping data for table `eventos`
+-- Extraindo dados da tabela `eventos`
 --
 
 INSERT INTO `eventos` (`id`, `titulo`, `data`, `local`, `imagem`, `descricao`, `popularidade`, `categoria`) VALUES
-(1, 'Machine Head', '2018-03-11 21:30:00', 'Campo Pequeno', 'banda2.jpg', 'Machine Head é uma banda de metal formada em 1991 em Oakland, Califórnia. O grupo foi fundado pelo guitarrista e vocalista Robb Flynn e o baixista Adam Duce. A formação atual é composta por Flynn, o baterista Dave McClain, o guitarrista Phill Demmel e o baixista Jared MacEachern. O Machine Head foi uma das bandas pioneiras no New Wave of American Heavy Metal.\r\n<br></br>\r\nMachine Head foi formada por Robb Flynn , anteriormente membro das bandas  Forbidden e Vio-lence . Flynn sentiu-se musicalmente insatisfeito com Vio-lence e pediu para iniciar um projeto paralelo. Quando seu pedido foi negado pelos outros integrantes, ele deixou a banda e formou o Machine Head em 1991 com Adam Duce, Logan Mader e Tony Constanza. O primeiro álbum da banda, Burn My Eyes , foi um grande sucesso na Europa, onde ganhou boa repercussão com o programa Headbangers Ball da MTV. Nos EUA (com o HBB tirado do ar durante o movimento grunge) o Machine Head não alcançaria sucesso até álbuns posteriores.\r\n<br></br>\r\nA banda quase se desfez em 2002, após terem seu contrato encerrado com a gravadora Roadrunner Records devido a uma controvérsia em torno de seu quarto álbum, Supercharger (lançado três semanas depois dos atentados de 11 de setembro de 2001), tendo suas canções e o videoclipe produzido para a canção "Crashing Around You" (que contava com edifícios em chamas) retirados de todos os meios de comunicação. A banda reassinou com a Roadrunner pouco tempo depois e já lançou quatro álbuns desde 2003, com The Blackening (2007) sendo nomeado ao Grammy Award. O Machine Head já vendeu mais de 3 milhões de discos em todo o mundo.', 100, 1),
+(1, 'Machine Head', '2018-03-11 09:30:00', 'Campo Pequeno', 'banda2.jpg', 'Machine Head é uma banda de metal formada em 1991 em Oakland, Califórnia. O grupo foi fundado pelo guitarrista e vocalista Robb Flynn e o baixista Adam Duce. A formação atual é composta por Flynn, o baterista Dave McClain, o guitarrista Phill Demmel e o baixista Jared MacEachern. O Machine Head foi uma das bandas pioneiras no New Wave of American Heavy Metal.\r\n<br></br>\r\nMachine Head foi formada por Robb Flynn , anteriormente membro das bandas  Forbidden e Vio-lence . Flynn sentiu-se musicalmente insatisfeito com Vio-lence e pediu para iniciar um projeto paralelo. Quando seu pedido foi negado pelos outros integrantes, ele deixou a banda e formou o Machine Head em 1991 com Adam Duce, Logan Mader e Tony Constanza. O primeiro álbum da banda, Burn My Eyes , foi um grande sucesso na Europa, onde ganhou boa repercussão com o programa Headbangers Ball da MTV. Nos EUA (com o HBB tirado do ar durante o movimento grunge) o Machine Head não alcançaria sucesso até álbuns posteriores.\r\n<br></br>\r\nA banda quase se desfez em 2002, após terem seu contrato encerrado com a gravadora Roadrunner Records devido a uma controvérsia em torno de seu quarto álbum, Supercharger (lançado três semanas depois dos atentados de 11 de setembro de 2001), tendo suas canções e o videoclipe produzido para a canção "Crashing Around You" (que contava com edifícios em chamas) retirados de todos os meios de comunicação. A banda reassinou com a Roadrunner pouco tempo depois e já lançou quatro álbuns desde 2003, com The Blackening (2007) sendo nomeado ao Grammy Award. O Machine Head já vendeu mais de 3 milhões de discos em todo o mundo.', 100, 1),
 (2, 'Alter Bridge', '2018-01-30 20:00:00', 'Altice Arena', 'banda1.jpg', 'Alter Bridge é um supergrupo de metal alternativo/post-grunge dos Estados Unidos, formado em 2004 a partir da pausa da banda Creed. O nome faz referência a uma ponte na cidade natal do líder/guitarrista, Mark Tremonti, lugar que era sempre proibido de ir por sua mãe, fazendo alusão então a ir além dos limites impostos, tomar um outro rumo.\r\n<br></br>\r\nOs até então integrantes do Creed Mark Tremonti (guitarrista) e Scott Phillips (baterista) juntaram-se a seu antigo companheiro, o baixista Brian Marshall, e com Myles Kennedy, ex-vocalista do The Mayfield Four para formar o Alter Bridge.', 50, 1),
 (3, 'Metallica', '2018-02-10 00:00:00', 'Altice Arena', 'banda19.jpg', 'Metallica é uma banda norte-americana de heavy metal originaria de Los Angeles, mas com base em San Francisco. O seu repertório inclui tempos rápidos, pesados, melodicos, instrumentais, e musicalidade agressiva, a qual os colocou no lugar de pioneiros do thrash metal e uma das bandas fundadoras do Big Four of Thrash, conjuntamente com Slayer, Megadeth e Anthrax. O Metallica foi formado em 1981, após James Hetfield responder a um anúncio que Lars Ulrich colocou no jornal local. A sua formação atual apresenta os fundadores Ulrich (bateria) e Hetfield (vocal e guitarra base), o guitarrista Kirk Hammett (que se juntou à banda em 1983), e o baixista Robert Trujillo (membro desde 2003). Antes de chegarem à sua formação atual, a banda teve outros integrantes, sendo eles: Dave Mustaine (guitarra), Ron McGovney, Cliff Burton e Jason Newsted (baixo).\r\n\r\nCom os lançamentos de seus quatro primeiros álbuns, o Metallica ganhou uma crescente base de fãs na comunidade de música underground, e alguns críticos dizem que Master of Puppets (1986) é um dos álbuns de thrash metal mais influentes e "pesados". Logo após, a banda alcançou grande sucesso comercial com o seu álbum auto-intitulado de 1991 (também conhecido como The Black Album), que já vendeu 30 milhões de cópias pelo mundo até hoje.[3] Com este lançamento a banda expandiu seu direcionamento musical, tentando atingir uma audiência mais mainstream. Com o lançamento de Load e Reload nos anos 1990, o Metallica tentou aproximar-se do rock alternativo que fazia sucesso na época para ganhar uma nova base de fãs, mas foi acusada por seus fãs antigos de "vender-se" para as gravadoras. Em 2000 o Metallica esteve entre os vários artistas que apresentaram uma ação judicial contra o Napster por compartilhar materiais protegidos por direitos de autor livremente sem o consentimento dos membros da banda.[4] A resolução foi tomada, e Napster se tornou um serviço de uso pago.', 90, 1),
 (4, 'Megadeth', '2018-05-01 18:30:00', 'Altice Arena', 'banda11.jpg', 'Megadeth é uma banda norte-americana de heavy metal liderada por seu fundador, o vocalista e guitarrista Dave Mustaine. O grupo foi formado em 1983, após Dave ser demitido do Metallica. Desde então, a banda lançou quinze álbuns de estúdio, quatro álbuns ao vivo, dois EP e cinco compilações.\r\n\r\nA banda ganhou fama internacional ligeiramente. Ficou muito conhecida por sempre trocar sua formação devido aos constantes problemas de personalidade de Mustaine e pelo fato de que o vocalista não queria viciados na banda em suas turnês (mesmo sendo sabido que ele mesmo tinha sérios problemas com drogas). Após o lançamento de seu álbum estreia em 1985, a banda lançou álbuns premiados com o disco de ouro e platina. O álbum Rust in Peace (1990) é considerado a melhor realização da banda. O álbum Countdown to Extinction (1992) foi o maior sucesso de vendas do grupo e nomeado ao Grammy no mesmo ano e Youthanasia (1994) manteve o bom ritmo do grupo. Com os lançamentos de Cryptic Writings (1997) e Risk (1999), o Megadeth se afastou de seus lançamentos antigos, tendo quase que abandonado o thrash metal e ido pra um lado mais heavy metal, sendo que somente com The World Needs a Hero (2001) a banda voltou às raízes do thrash. O grupo foi dissolvido em 2002, após Mustaine descobrir uma séria lesão no nervo do braço esquerdo, mas após dois anos de longas e exaustivas sessões de fisioterapia, Mustaine reformulou a banda decidiu voltar a ativa com o lançamento de The System Has Failed (2004). Desde então, a banda lançou outros cinco álbuns: United Abominations (2007), Endgame (2009), TH1RT3EN (2011), Super Collider (2013) e Dystopia (2016). Megadeth faz parte do "Big Four of Thrash", juntamente com Slayer, Metallica e Anthrax.', 85, 1),

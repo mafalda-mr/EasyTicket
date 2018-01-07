@@ -4,7 +4,6 @@
 
 //Ligação à base de dados
 $ligacao = mysqli_connect('localhost','root','','easy_ticket');
-//$ligacao = mysqli_connect('atlastockdev_db_1','root','root','easy_ticket');
 
 mysqli_set_charset($ligacao, 'utf8');
 
@@ -67,6 +66,7 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 	<header id="intro">
 
 		<h1 id="intro_titulo">No Music No Life</h1>
+		
 
 	</header>
 
@@ -113,7 +113,7 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		    <p><?php echo $mais_vendidos[$i]['local']; ?></p>
 
 		    <div class="botao">
-		    	<a href="comprar_bilhetes.html" target="_blank">Comprar</a>
+		    	<a href="comprar_bilhetes.php?id=<?php echo $mais_vendidos[$i]['id']; ?>" target="_blank">Comprar</a>
 		    </div>
 
 		    <br></br>
@@ -123,14 +123,13 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		</div>
 	</div>
 
-
 <?php } ?>
 
 <div class="clear"></div>
 
 <?php 
 
-//Consulta à base de dados
+//Nova consulta à base de dados
 $consulta = mysqli_query($ligacao, "SELECT * FROM eventos WHERE `data` >= NOW() ORDER BY data LIMIT 10");
 $proximos = array();
 
@@ -139,8 +138,6 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 }
 
 ?>
-
-
 		
 <!-- PRÓXIMOS CONCERTOS -->
 	
@@ -194,7 +191,7 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		    <p><?php echo $proximos[$i]['local']; ?></p>
 
 		    <div class="botao">
-		    	<a href="comprar_bilhetes.html" target="_blank">Comprar</a>
+		    	<a href="comprar_bilhetes.php?id=<?php echo $proximos[$i]['id']; ?>" target="_blank">Comprar</a>
 		    </div>
 
 		    <br></br>
@@ -203,8 +200,6 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 		    <p><?php echo $proximos[$i]['descricao']; ?></p>
 		</div>
 	</div>
-
-
 <?php } ?>
 
 	</div>
@@ -216,17 +211,13 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 	<footer id="rodape">
 
 		<div id="contactos">
-
 			<h1>Contactos</h1>
 			<p>21 711 90 00</p>
 			<p>Campus de Benfica do IPL</p>
 			<p>1549-014 Lisboa</p>
-			
-
 		</div>
 
 		<div id="redes_sociais">
-
 			<h1>Siga-nos</h1>
 			<a href="https://www.facebook.com/">
 				<img src="images/facebook.png"/>
@@ -240,7 +231,10 @@ while ($linha = mysqli_fetch_assoc($consulta) ){
 			<a href="https://mail.google.com">
 				<img src="images/email.png"/>
 			</a>
-
+		</div>
+		
+		<div id="copy">
+			<p>&copy Copyright 2018. All Rights Reserved.</p><p>Powered by MafaldaRodrigues_9623 and BárbaraVieira_9251</p>
 		</div>
 
 	</footer>
